@@ -11753,6 +11753,47 @@ div#notebook {
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Visualizing-a-Bike-Ride-in-3D">Visualizing a Bike Ride in 3D<a class="anchor-link" href="#Visualizing-a-Bike-Ride-in-3D">&#182;</a></h1><p>Will Geary (<a href="http://www.twitter.com/wgeary">@wgeary</a>)</p>
 <p>This notebook will walk through the steps necessary to use <a href="http://www.cesiumjs.org">Cesium</a>, a JavaScript library for 3D mapping, to visualize GPX data recorded with <a href="http://www.strava.com/">Strava</a>.</p>
+<p>Below is what the result looks like. Live version here: <a href="https://willgeary.github.io/CesiumApps/Apps/Strava/">https://willgeary.github.io/CesiumApps/Apps/Strava/</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">IPython</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://willgeary.github.io/CesiumApps/Apps/Strava/&#39;</span>
+<span class="n">iframe</span> <span class="o">=</span> <span class="s1">&#39;&lt;iframe src=&#39;</span> <span class="o">+</span> <span class="n">url</span> <span class="o">+</span> <span class="s1">&#39; width=100</span><span class="si">% he</span><span class="s1">ight=600&gt;&lt;/iframe&gt;&#39;</span>
+<span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">HTML</span><span class="p">(</span><span class="n">iframe</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[1]:</div>
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<iframe src=https://willgeary.github.io/CesiumApps/Apps/Strava/ width=100% height=600></iframe>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="About-CZML">About CZML<a class="anchor-link" href="#About-CZML">&#182;</a></h1><p>Cesium defines a JSON data format called <a href="https://github.com/AnalyticalGraphicsInc/czml-writer/wiki/CZML-Guide">CZML</a> for describing a time-dynamic graphical scenes, primarily for display in a web browser running Cesium. It describes lines, points, polygons, models, and other graphical primitives, and specifies how they change with time. The relationship between Cesium and CZML is similar to the relationship between Google Earth and KML.</p>
 <p>CZML is an attractive paradigm for descriping spatio-temporal data. In particular, it proposes the following format for describing three-dimensional positions that change over time:</p>
 <p><a href="https://github.com/AnalyticalGraphicsInc/czml-writer/wiki/CartographicValue">CartographicValue</a>: A geodetic, WGS84 position specified as [Longitude, Latitude, Height]. If the array has three elements, the value is constant. If it has four or more elements, they are time-tagged samples arranged as [Time, Longitude, Latitude, Height, Time, Longitude, Latitude, Height, ...], where Time is an ISO 8601 date and time string or seconds since epoch.</p>
@@ -11783,7 +11824,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
@@ -11818,7 +11859,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">gpx_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../data/Woodstock_NY.gpx&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
@@ -11842,7 +11883,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1">## See a primer on reading GPX data in python here: http://andykee.com/visualizing-strava-tracks-with-python.html</span>
@@ -11890,7 +11931,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">parse_gpx</span><span class="p">(</span><span class="n">gpx</span><span class="p">)</span>
@@ -11905,7 +11946,7 @@ div#notebook {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[7]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[5]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -11999,7 +12040,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">create_czml_path</span><span class="p">(</span><span class="n">df_input</span><span class="p">,</span> <span class="n">relative_elevation</span> <span class="o">=</span> <span class="bp">False</span><span class="p">):</span>
@@ -12040,7 +12081,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">create_czml_path</span><span class="p">(</span><span class="n">df</span><span class="p">)[:</span><span class="mi">12</span><span class="p">]</span>
@@ -12054,7 +12095,7 @@ div#notebook {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[14]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[7]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12099,7 +12140,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">point_with_trailing_path</span><span class="p">(</span><span class="n">df_input</span><span class="p">,</span> <span class="n">time_multiplier</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">):</span>
@@ -12222,7 +12263,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">czml_output</span> <span class="o">=</span> <span class="n">point_with_trailing_path</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
@@ -12257,7 +12298,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">IPython</span>
@@ -12274,7 +12315,7 @@ div#notebook {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[29]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[10]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <iframe src=https://willgeary.github.io/CesiumApps/Apps/Strava/ width=100% height=600></iframe>
@@ -12294,7 +12335,7 @@ div#notebook {
 <p>I created the above visualization using CesiumJS locally. But you can test yours out online without having to download Cesium by using Cesium's Sandbox tool.</p>
 <p>To visualize your data online:</p>
 <ol>
-<li><p>Naviate to: <a href="http://cesiumjs.org/Cesium/Apps/Sandcastle/index.html?src=CZML%20Path.html&amp;label=">http://cesiumjs.org/Cesium/Apps/Sandcastle/index.html?src=CZML%20Path.html&amp;label=</a></p>
+<li><p>Navigate to: <a href="http://cesiumjs.org/Cesium/Apps/Sandcastle/index.html?src=CZML%20Path.html&amp;label=">http://cesiumjs.org/Cesium/Apps/Sandcastle/index.html?src=CZML%20Path.html&amp;label=</a></p>
 </li>
 <li><p>Open the CZML output file created above and copy its contents</p>
 </li>
@@ -12310,7 +12351,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
@@ -12325,7 +12366,7 @@ div#notebook {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[30]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[12]:</div>
 
 
 <div class="output_png output_subarea output_execute_result">
